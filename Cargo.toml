@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "bearssl",
+    "bearssl-sys",
+]
