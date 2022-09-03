@@ -1,5 +1,7 @@
 # BearSSL-rs
 
+![audit badge](https://github.com/aydinmercan/bearssl-rs/actions/workflows/audit.yml/badge.svg)
+
 Use and extend BearSSL in Rust.
 
 ## Crates
@@ -10,6 +12,16 @@ Use and extend BearSSL in Rust.
     * Versions below `0.0.2` are unrelated to this crate.
 
 ## Development
+
+The code exists in multiple places as listed below:
+
+* [Main Repository](https://gitea.treehouse.systems/jmercan/bearssl-rs)
+    - Where the main branch resides.
+    - CI tasks are planned to run here.
+* [GitHub Mirror](https://github.com/aydinmercan/bearssl-rs)
+    - Mainly intended to be used as a source for crate registries.
+    - Short jobs such as auditing also run here.
+    - Issues here are still considered but PRs will probably be merged manually.
 
 We prefer commit signing via SSH. The allowed signers are listed in `.gitsigners`.
 To verify, a gitconfig entry such as the following is likely needed:
