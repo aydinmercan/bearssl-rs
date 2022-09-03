@@ -1,11 +1,12 @@
 [package]
 name = "bearssl"
 description = "BearSSL wrapper and engine development library"
-version = "0.1.0-pre.0"
+version = "0.0.2-pre.0"
 authors = ["Aydin Mercan <aydin@mercan.dev>"]
 license = "BSD-3-Clause"
 readme = "README.md"
-keywords = ["bearssl", "tls"]
+categories = ["cryptography", "no-std", "api-bindings"]
+keywords = ["bearssl", "crypto", "tls", "ssl"]
 edition = "2021"
 rust-version = "1.63"
 
