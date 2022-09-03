@@ -1,4 +1,8 @@
 [output]
 quiet = false
-deny = ["warnings"]
-informational_warnings = ["unmaintained", "unsound"]
+deny = [
+    "unmaintained",
+    "unsound",
+    "warnings",
+    "yanked",
+]
