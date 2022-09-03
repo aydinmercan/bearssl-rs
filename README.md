@@ -9,6 +9,16 @@ Use and extend BearSSL in Rust.
 * `bearssl`: Higher level code for easier use in servers, clients, etc.
     * Versions below `0.0.2` are unrelated to this crate.
 
+## Development
+
+We prefer commit signing via SSH. The allowed signers are listed in `.gitsigners`.
+To verify, a gitconfig entry such as the following is likely needed:
+
+```ini
+[gpg.ssh]
+    allowedSignersFile = .gitsigners
+```
+
 ## License
 
 All crates in this repository are available under `BSD-3-Clause`.
