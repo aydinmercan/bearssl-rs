@@ -2,11 +2,10 @@
 
 Here we list the how other projects were utilized and their licenses.
 
-
 ## Rustls
 
 * API Design for connections
-    - `read_tls` and `write_tls` is utilized except we use byte slices due to being `no_std`.
+    - `read_tls` and `write_tls` API design is copied pretty much as-is.
 
 ```
 ISC License (ISC)

@@ -1,7 +1,9 @@
 use core::marker::PhantomData;
+use core::mem::transmute;
 
 use bearssl_sys::*;
 
+use crate::engine::tls;
 use crate::x509::cert::X509Certificate;
 
 /// Represents a connected client.
@@ -12,5 +14,27 @@ pub struct ServerConnection<'a> {
 }
 
 impl<'a> ServerConnection<'a> {
-    pub fn push_bytes(&self, data: &[u8]) {}
+    pub fn push_write(&mut self, src: &[u8]) -> Result<usize, tls::Error> {
+        let engine: &mut tls::TlsEngine = unsafe { transmute(&mut self.context.eng) };
+
+        engine.push_write(src)
+    }
+
+    pub fn pull_write(&mut self, dst: &mut [u8]) -> Result<usize, tls::Error> {
+        let engine: &mut tls::TlsEngine = unsafe { transmute(&mut self.context.eng) };
+
+        engine.pull_write(dst)
+    }
+
+    pub fn push_read(&mut self, src: &[u8]) -> Result<usize, tls::Error> {
+        let engine: &mut tls::TlsEngine = unsafe { transmute(&mut self.context.eng) };
+
+        engine.push_read(src)
+    }
+
+    pub fn pull_read(&mut self, dst: &mut [u8]) -> Result<usize, tls::Error> {
+        let engine: &mut tls::TlsEngine = unsafe { transmute(&mut self.context.eng) };
+
+        engine.pull_read(dst)
+    }
 }
