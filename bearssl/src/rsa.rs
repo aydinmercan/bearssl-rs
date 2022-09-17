@@ -1,4 +1,5 @@
-use bearssl_sys::*;
+mod private;
+mod public;
 
-pub struct PublicKey(pub(crate) br_rsa_public_key);
-pub struct PrivateKey(pub(crate) br_rsa_private_key);
+pub use private::PrivateKey;
+pub use public::PublicKey;
