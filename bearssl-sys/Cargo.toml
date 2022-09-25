@@ -8,13 +8,13 @@ readme = "README.md"
 categories = ["cryptography", "no-std", "external-ffi-bindings"]
 keywords = ["bearssl", "crypto", "tls", "ssl"]
 edition = "2021"
-rust-version = "1.63"
+rust-version = "1.64"
 
 [badges]
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-libc = "0.2.132"
+libc = { version = "0.2.133", optional = true }
 
 [build-dependencies]
 bindgen = "0.60.1"
@@ -22,4 +22,4 @@ cc = { version =  "1.0.73", optional = true }
 
 [features]
 bundled = ["dep:cc"]
-dont-assume-size_t-equals-uintptr_t = []
+dont-assume-size_t-equals-uintptr_t = ["dep:libc"]

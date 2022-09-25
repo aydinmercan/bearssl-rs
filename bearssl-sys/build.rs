@@ -7,6 +7,12 @@ static HEADER_PATH: &str = "wrapper.h";
 #[cfg(feature = "bundled")]
 static HEADER_PATH: &str = "bundled/inc/bearssl.h";
 
+#[cfg(feature = "dont-assume-size_t-equals-uintptr_t")]
+static CTYPES_PREFIX: &str = "::libc";
+
+#[cfg(not(feature = "dont-assume-size_t-equals-uintptr_t"))]
+static CTYPES_PREFIX: &str = "::core::ffi";
+
 #[cfg(not(feature = "bundled"))]
 fn bearssl_handle_linkage() {
     #[cfg(not(unix))]
@@ -83,7 +89,7 @@ fn main() {
 
     let bindings = bindgen::builder()
         .use_core()
-        .ctypes_prefix("::libc")
+        .ctypes_prefix(CTYPES_PREFIX)
         .header(HEADER_PATH)
         .default_macro_constant_type(bindgen::MacroTypeVariation::Signed)
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))

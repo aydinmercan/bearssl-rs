@@ -8,14 +8,14 @@ readme = "README.md"
 categories = ["cryptography", "no-std", "api-bindings"]
 keywords = ["bearssl", "crypto", "tls", "ssl"]
 edition = "2021"
-rust-version = "1.63"
+rust-version = "1.64"
 
 [badges]
 maintenance = { status = "actively-developed" }
 
 [dependencies]
 bearssl-sys = { path = "../bearssl-sys" }
-libc = "0.2.132"
+libc = { version = "0.2.133", optional = true }
 rand_core = { version = "0.6.3", default-features = false }
 zeroize = { version = "1.5.7", default-features = false, optional = true }
 
@@ -24,5 +24,5 @@ default = ["zeroize"]
 
 std = ["rand_core/std", "zeroize?/std"]
 bundled = ["bearssl-sys/bundled"]
-dont-assume-size_t-equals-uintptr_t = ["bearssl-sys/dont-assume-size_t-equals-uintptr_t"]
+dont-assume-size_t-equals-uintptr_t = ["dep:libc", "bearssl-sys/dont-assume-size_t-equals-uintptr_t"]
 zeroize = ["dep:zeroize"]
