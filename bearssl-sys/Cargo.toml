@@ -5,6 +5,7 @@ version = "0.0.5-pre.0"
 authors = ["Aydin Mercan <aydin@mercan.dev>"]
 license = "BSD-3-Clause"
 readme = "README.md"
+build = "build/main.rs"
 categories = ["cryptography", "no-std", "external-ffi-bindings"]
 keywords = ["bearssl", "crypto", "tls", "ssl"]
 edition = "2021"
