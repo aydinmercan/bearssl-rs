@@ -15,7 +15,7 @@ rust-version = "1.64"
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-libc = { version = "0.2.133", optional = true }
+libc = { version = "0.2.134", optional = true }
 
 [build-dependencies]
 bindgen = "0.60.1"
