@@ -15,7 +15,7 @@ maintenance = { status = "actively-developed" }
 
 [dependencies]
 bearssl-sys = { path = "../bearssl-sys" }
-libc = { version = "0.2.134", optional = true }
+libc = { version = "0.2.137", optional = true }
 rand_core = { version = "0.6.3", default-features = false }
 zeroize = { version = "1.5.7", default-features = false, optional = true }
 
