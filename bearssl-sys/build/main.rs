@@ -5,6 +5,8 @@ use std::path::PathBuf;
 fn main() {
     linkage::configure();
 
+    let usize_equals_size_t = !cfg!(feature = "dont-assume-size_t-equals-uintptr_t");
+
     let bindings = bindgen::builder()
         .use_core()
         .ctypes_prefix("::core::ffi")
@@ -17,6 +19,7 @@ fn main() {
         .blocklist_type("__.*_t")
         .blocklist_type("size_t")
         .generate_comments(false)
+        .size_t_is_usize(usize_equals_size_t)
         .generate()
         .expect("Unable to generate bindings");
 
