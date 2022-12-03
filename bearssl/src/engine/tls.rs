@@ -23,6 +23,8 @@ pub struct TlsEngine {
 
 impl TlsEngine {
     /// Push some plaintext bytes into engine.
+    ///
+    /// Returns how many bytes were copied on success.
     pub fn push_write(&mut self, src: &[u8]) -> Result<usize, Error> {
         let buf = unsafe {
             let mut l = MaybeUninit::<usize>::uninit();
@@ -55,7 +57,7 @@ impl TlsEngine {
         let buf = unsafe {
             let mut l = MaybeUninit::<usize>::uninit();
 
-            let b = br_ssl_engine_sendrec_buf(&mut self.context, l.as_mut_ptr());
+            let b = br_ssl_engine_sendrec_buf(&self.context, l.as_mut_ptr());
 
             if b.is_null() {
                 return Err(Error::Unknown);
@@ -83,7 +85,7 @@ impl TlsEngine {
         let buf = unsafe {
             let mut l = MaybeUninit::<usize>::uninit();
 
-            let b = br_ssl_engine_recvrec_buf(&mut self.context, l.as_mut_ptr());
+            let b = br_ssl_engine_recvrec_buf(&self.context, l.as_mut_ptr());
 
             if b.is_null() {
                 return Err(Error::Unknown);
@@ -111,7 +113,7 @@ impl TlsEngine {
         let buf = unsafe {
             let mut l = MaybeUninit::<usize>::uninit();
 
-            let b = br_ssl_engine_recvapp_buf(&mut self.context, l.as_mut_ptr());
+            let b = br_ssl_engine_recvapp_buf(&self.context, l.as_mut_ptr());
 
             if b.is_null() {
                 return Err(Error::Unknown);

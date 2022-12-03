@@ -15,7 +15,6 @@ maintenance = { status = "actively-developed" }
 
 [dependencies]
 bearssl-sys = { path = "../bearssl-sys" }
-libc = { version = "0.2.137", optional = true }
 rand_core = { version = "0.6.3", default-features = false }
 zeroize = { version = "1.5.7", default-features = false, optional = true }
 
@@ -24,5 +23,4 @@ default = ["zeroize"]
 
 std = ["rand_core/std", "zeroize?/std"]
 bundled = ["bearssl-sys/bundled"]
-dont-assume-size_t-equals-uintptr_t = ["dep:libc", "bearssl-sys/dont-assume-size_t-equals-uintptr_t"]
 zeroize = ["dep:zeroize"]

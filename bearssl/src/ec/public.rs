@@ -1,4 +1,3 @@
-use core::ops::Drop;
 use core::slice;
 
 use bearssl_sys::br_ec_public_key;

@@ -18,5 +18,4 @@ pub mod ec;
 pub mod engine;
 pub mod profile;
 pub mod rsa;
-pub mod server;
 pub mod x509;

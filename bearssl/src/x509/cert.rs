@@ -3,20 +3,21 @@ use core::marker::PhantomData;
 use bearssl_sys::*;
 
 #[repr(transparent)]
-pub struct X509Certificate<'a> {
-    pub(crate) inner: br_x509_certificate,
-    _marker: PhantomData<&'a mut u8>,
+pub struct Certificate<'a> {
+    context: br_x509_certificate,
+    _marker: PhantomData<&'a u8>,
 }
 
-impl<'a> X509Certificate<'a> {
-    pub fn from_unchecked_der(raw: &'a mut [u8]) -> X509Certificate<'a> {
-        let inner = br_x509_certificate {
-            data: raw.as_mut_ptr(),
-            data_len: raw.len(),
+impl<'a> Certificate<'a> {
+    /// Validity of the certificate is not checked.
+    pub fn from_unchecked_der(slice: &'a mut [u8]) -> Certificate {
+        let context = br_x509_certificate {
+            data: slice.as_mut_ptr(),
+            data_len: slice.len(),
         };
 
-        X509Certificate {
-            inner,
+        Certificate {
+            context,
             _marker: PhantomData,
         }
     }
